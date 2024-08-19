@@ -18,6 +18,12 @@ cd routedbits-python
 pip install .
 ```
 
+Use in requirements.txt
+
+```
+routedbits @ git+https://github.com/routedbits/routedbits-python.git
+```
+
 ## Usage
 
 1) Retrieve the current list of nodes:
