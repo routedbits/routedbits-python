@@ -1,0 +1,22 @@
+[project]
+name = "routedbits"
+description = "RoutedBits Python Library"
+version = "1.0.0"
+authors = [
+    { name = "RoutedBits", email = "noc@routedbits.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+packages = [{include = "routedbits"}]
+dependencies = [
+    "requests==2.32.3"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.urls]
+"Homepage" = "https://routedbits.com"
+"Bug Reports" = "https://github.com/routedbits/routedbits-python/issues"
+"Source" = "https://github.com/routedbits/routedbits-python/"
