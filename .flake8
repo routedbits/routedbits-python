@@ -1,0 +1,7 @@
+[flake8]
+exclude = venv
+ignore = E722,F821
+max-line-length = 120
+
+per-file-ignores =
+    routedbits/__init__.py:F401
