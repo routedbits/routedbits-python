@@ -41,7 +41,7 @@ a.nodes() # Returns a list of dicts
 from routedbits import RoutedBits
 
 a.RoutedBits()
-a.nodes(name="dal1")
+a.node(name="dal1")
 
 print(a)
 
