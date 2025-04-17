@@ -46,7 +46,13 @@ a.node(name="dal1")
 print(a)
 
 """
-{'city': 'Dallas, TX, US', 'flag': '🇺🇸', 'fqdn': 'router.dal1.routedbits.com', 'hostname': 'router.dal1', 'name': 'dal1', 'tunnel_ipv4_address': '172.20.19.68', 'tunnel_ipv6_address': {'link_local': 'fe80::207', 'ula': 'fdb1:e72a:343d::5'}, 'wireguard_public_key': '8clbJPxK5ylOhFDNGdn/CL5zRWQdf7rXbLeF7j8czFI='}
+namespace(city='Dallas, TX, US', region='US Central', flag='🇺🇸', fqdn='router.dal1.routedbits.com', hostname='router.dal1', latitude='32.818072', longitude='-97.061721', tunnel_ipv4_address='172.20.19.68', tunnel_ipv6_address={'link_local': 'fe80::207', 'ula': 'fdb1:e72a:343d::5'}, type='dual-stack', wireguard_public_key='8clbJPxK5ylOhFDNGdn/CL5zRWQdf7rXbLeF7j8czFI=', name='dal1')
+"""
+
+print(a.fqdn)
+
+"""
+'router.dal1.routedbits.com'
 """
 ```
 
