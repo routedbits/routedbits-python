@@ -3,6 +3,7 @@
 #
 
 from requests import Session
+from types import SimpleNamespace
 
 from routedbits.exceptions import NotFound, TooManyArguments
 
@@ -23,14 +24,13 @@ class RoutedBits(object):
 
     def nodes(self, sort_by="city"):
         path = "/routers.json"
-
         nodes = []
 
         for name, router in self._request("GET", path).json().items():
             router["name"] = name
-            nodes.append(router)
+            nodes.append(SimpleNamespace(**router))
 
-        return sorted(nodes, key=lambda node: node[sort_by])
+        return sorted(nodes, key=lambda node: node.__dict__[sort_by])
 
     def node(self, hostname=None, name=None):
         if hostname and name:
@@ -39,11 +39,11 @@ class RoutedBits(object):
         nodes = self.nodes()
         for node in nodes:
             if hostname:
-                if node["hostname"] == hostname:
+                if node.hostname == hostname:
                     return node
 
             if name:
-                if node["name"] == name:
+                if node.name == name:
                     return node
 
         raise NotFound()
