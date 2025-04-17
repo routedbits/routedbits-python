@@ -8,7 +8,7 @@ from routedbits.exceptions import NotFound, TooManyArguments
 
 
 class RoutedBits(object):
-    BASE = "https://dn42.routedbits.com"
+    BASE = "https://dn42.routedbits.io/api"
 
     def __init__(self):
         self._session = Session()
@@ -21,24 +21,22 @@ class RoutedBits(object):
         resp.raise_for_status()
         return resp
 
-    def nodes(self, minimal=False, sort_by="city"):
-        path = "/nodes.json"
-        resp = self._request("GET", path).json()["regions"]
+    def nodes(self, sort_by="city"):
+        path = "/routers.json"
 
-        nodes = resp
-        if minimal:
-            nodes = []
-            for region in resp:
-                nodes.extend(region["sites"])
-            nodes = sorted(nodes, key=lambda node: node[sort_by])
+        nodes = []
 
-        return nodes
+        for name, router in self._request("GET", path).json().items():
+            router["name"] = name
+            nodes.append(router)
+
+        return sorted(nodes, key=lambda node: node[sort_by])
 
     def node(self, hostname=None, name=None):
         if hostname and name:
             raise TooManyArguments()
 
-        nodes = self.nodes(minimal=True)
+        nodes = self.nodes()
         for node in nodes:
             if hostname:
                 if node["hostname"] == hostname:
