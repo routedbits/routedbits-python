@@ -1,7 +1,7 @@
 [project]
 name = "routedbits"
 description = "RoutedBits Python Library"
-version = "1.0.0"
+version = "2.0.0"
 authors = [
     { name = "RoutedBits", email = "noc@routedbits.com" }
 ]
